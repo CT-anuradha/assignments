@@ -1,0 +1,16 @@
+<%= form_with scope: :p, uri:people_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
