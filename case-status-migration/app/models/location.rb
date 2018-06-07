@@ -5,6 +5,10 @@ class Location
   field :state, type: String
   field :district, type: String
 
+  index({ state: 1 })
+  index({ district: 1 })
+  index({ state: 1, district: 1}, { unique: true, background: false })
+
   validates :state, presence: true
   validates :district, presence: true
 

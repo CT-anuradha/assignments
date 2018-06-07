@@ -20,8 +20,13 @@ class CaseInformation
   field :classification_number, type: String
   field :purpose, type: String
   field :diary_number, type: String
+  field :peti_resp_number, type: String
+  field :sub_category, type: String
+  field :sub_sub_category, type: String
 
   index({ case_bench: 1 }, { unique: false, background: true })
+  index({ storage_id: 1 }, { unique: false, background: true })
+  index({ snapshot_url: 1 }, { unique: false, background: true })
 
-  belongs_to :case, inverse_of: :case_information, optional: true
+  belongs_to :case, inverse_of: :case_information
 end

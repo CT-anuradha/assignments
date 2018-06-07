@@ -8,5 +8,6 @@ class Judge
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
-  has_many :cases, inverse_of: :judges, autosave: true
+  has_many :case_judges, inverse_of: :judge, autosave: true
+  has_many :histories, inverse_of: :judge, autosave: true
 end

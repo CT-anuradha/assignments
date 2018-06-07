@@ -10,7 +10,6 @@ RSpec.describe Other, type: :model do
 
   context 'associations' do
     it { is_expected.to have_many(:cases).as_inverse_of(:other).with_autosave }
-    it { is_expected.to have_many(:extra_params,).as_inverse_of(:other).with_dependent(:destroy).with_autosave }
   end
 
 end

@@ -6,5 +6,5 @@ class Department
   field :code, type: String
   field :name, type: String
 
-  has_many :case_departments, inverse_of: :department, autosave: true
+  belongs_to :case, inverse_of: :departments
 end

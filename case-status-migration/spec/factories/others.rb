@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :other do
-    uri { FFaker::Internet.http_url }
+    uri "THIS IS A URI"
   end
 end

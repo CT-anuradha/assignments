@@ -7,8 +7,8 @@ class Party
 
   index({ name: 1 })
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :address }
 
-  has_many :advocate_parties, inverse_of: :party, autosave: true
-  has_many :case_parties, inverse_of: :party, autosave: true
+  has_many :advocate_parties, dependent: :destroy, inverse_of: :party, autosave: true
+  has_many :case_parties, dependent: :destroy, inverse_of: :party, autosave: true
 end

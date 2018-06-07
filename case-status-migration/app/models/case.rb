@@ -32,9 +32,7 @@ class Case
 
   enumerize :flag, in: [:meta_data, :updated, :crawl, :parse, :not_available_on_website]
 
-  index({ court_group_id: 1 })
-  index({ case_act_id: 1 })
-  index({ casestatus_param_id: 1 })
+  index({ court_group_id: 1 }, { unique: false, background: true })
   index({ next_hearing: 1 }, { unique: false, background: true })
   index({ case_stage: 1 }, { unique: false, background: true })
   index({ side: 1 }, { unique: false, background: true })
@@ -42,34 +40,28 @@ class Case
   index({ case_number: 1 }, { unique: false, background: true })
   index({ flag: 1 }, { unique: false, background: true })
   index({ csp: 1 }, { unique: true, background: false })
-  index({ case_type: 1, case_number: 1, court_group_id: 1, csp: 1}, { unique: true, background: false })
 
-  validates :case_number, :year, :flag, presence: true
-  validates :case_type, presence: true, uniqueness: { case_sensitive: false }
+  validates :csp, :case_number, :year, :flag, :case_type, presence: true
 
-  belongs_to :court_group, inverse_of: :cases, optional: true
+  belongs_to :court_group, inverse_of: :cases
   belongs_to :fir_detail, inverse_of: :cases, optional: true
-  belongs_to :judge, inverse_of: :cases, optional: true
   belongs_to :other, inverse_of: :cases, optional: true
-  has_many :case_sub_cases, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :ia_details, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :case_departments, dependent: :destroy, autosave: true, inverse_of: :case
+  has_many :case_judges, dependent: :destroy, autosave: true, inverse_of: :case
+  has_many :sub_cases, dependent: :destroy, autosave: true, inverse_of: :case
+  has_many :departments, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :case_details, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :case_category_details, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :histories, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :case_interlocutory_applications, dependent: :destroy, autosave: true, inverse_of: :case
+  has_many :interlocutory_applications, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :case_associated_case_details, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :case_court_details, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :lower_court_details, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :orders, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :papers, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :case_hearings, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :usr_details, dependent: :destroy, autosave: true, inverse_of: :case
-  has_many :vakalats, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :case_parties, dependent: :destroy, autosave: true, inverse_of: :case
   has_many :case_acts, dependent: :destroy, autosave: true, inverse_of: :case
+  has_many :case_advocates, dependent: :destroy, inverse_of: :case
   has_one :vehicle, dependent: :destroy, autosave: true, inverse_of: :case
   has_one :case_information, dependent: :destroy, autosave: true, inverse_of: :case
-  has_one :filing_detail, dependent: :destroy, autosave: true, inverse_of: :case
   has_one :casestatus_param, dependent: :destroy, autosave: true, inverse_of: :case
 end

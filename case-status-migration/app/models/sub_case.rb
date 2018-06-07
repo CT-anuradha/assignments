@@ -8,5 +8,5 @@ class SubCase
   index({ sub_case_type: 1 }, { unique: false, background: true })
   index({ sub_case_number: 1 }, { unique: false, background: true })
 
-  has_many :case_sub_cases, inverse_of: :sub_case, autosave: true
+  belongs_to :case, inverse_of: :sub_cases
 end

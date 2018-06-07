@@ -10,6 +10,6 @@ RSpec.describe SubCase, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_many(:case_sub_cases).as_inverse_of(:sub_case).with_autosave }
+    it { is_expected.to belong_to(:case).as_inverse_of(:sub_cases) }
   end
 end

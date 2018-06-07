@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :case do
-    case_type { FFaker::Lorem.sentence }
+    case_type { "Contempt of Court Cases relating to Civil Contempt.(142)" }
     case_number { "Cont.Cas(C)/54/2017" }
     year { "2017" }
     status { "CASE PENDING" }
@@ -23,7 +23,6 @@ FactoryBot.define do
     category { "PARTITION" }
     side { "Civil" }
     case_stage { "ARB APPEAL FOR HEARING U/S 37" }
-    csp { FFaker::String.from_regexp(/\d+[a-zA-z]+\d+[A-Za-z]/) }
-    flag { "meta_data" }
+    update_flag { "meta_data" }
   end
 end

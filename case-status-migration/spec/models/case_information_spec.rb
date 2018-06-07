@@ -6,6 +6,8 @@ RSpec.describe CaseInformation, type: :model do
 
   context 'index' do
     it { is_expected.to have_index_for(case_bench: 1).with_options(unique: false, background: true)}
+    it { is_expected.to have_index_for(storage_id: 1).with_options(unique: false, background: true)}
+    it { is_expected.to have_index_for(snapshot_url: 1).with_options(unique: false, background: true)}
   end
 
   context 'associations' do

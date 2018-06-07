@@ -6,7 +6,6 @@ class Order
   field :order_number, type: String
   field :judge, type: String
   field :ordered_at, type: Date
-  field :order_details, type: String
   field :latest_order, type: String
   field :link, type: String
   field :order_type, type: String

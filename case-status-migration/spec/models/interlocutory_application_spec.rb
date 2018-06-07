@@ -5,6 +5,6 @@ RSpec.describe InterlocutoryApplication, type: :model do
   it { is_expected.to have_timestamps }
 
   context 'associations' do
-    it { is_expected.to have_many(:case_interlocutory_applications).as_inverse_of(:interlocutory_application).with_autosave }
+    it { is_expected.to belong_to(:case).as_inverse_of(:interlocutory_applications) }
   end
 end

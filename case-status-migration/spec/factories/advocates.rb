@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :advocate do
-    name { FFaker::Name.name }
+    name { "Hon'ble The Chief Justice" }
   end
 end

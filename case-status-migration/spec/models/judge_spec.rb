@@ -9,11 +9,11 @@ RSpec.describe Judge, type: :model do
   end
 
   context 'validations' do
-    it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_uniqueness_of(:name) }
   end
 
   context 'associations' do
-    it { is_expected.to have_many(:cases).as_inverse_of(:judges).with_autosave }
+    it { is_expected.to have_many(:case_judges).as_inverse_of(:judge).with_autosave }
+    it { is_expected.to have_many(:histories).as_inverse_of(:judge).with_autosave }
   end
 end
